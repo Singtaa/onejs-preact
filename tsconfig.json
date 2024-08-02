@@ -4,9 +4,7 @@
         "module": "esnext",
         "moduleResolution": "node",
         "declaration": true,
-        "lib": [
-            "esnext"
-        ],
+        "lib": [ "esnext" ],
         "jsx": "react",
         "jsxFactory": "h",
         "jsxFragmentFactory": "Fragment",

@@ -3,5 +3,8 @@
     "description": "Preact, modified for OneJS",
     "version": "0.3.7",
     "main": "index.js",
-    "types": "typings.d.ts"
+    "types": "typings.d.ts",
+    "dependencies": {
+        "onejs-core": "^0.3.7"
+    }
 }

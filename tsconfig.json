@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "declaration": true,
+        "lib": [
+            "esnext"
+        ],
+        "jsx": "react",
+        "jsxFactory": "h",
+        "jsxFragmentFactory": "Fragment",
+        "skipLibCheck": false,
+        "types": [
+            "./index.d.ts",
+            "onejs-core"
+        ]
+    }
+}

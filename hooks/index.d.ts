@@ -26,7 +26,7 @@ interface MutableRef<T> {
 }
 declare function useRef<T>(initialValue?: T): MutableRef<T>;
 
-export type StateUpdater<S> = S | ((prevState: S) => S);
+export type StateUpdater<S> = ((prevState: S) => S);
 
 export { useEventfulState } from './eventful';
 

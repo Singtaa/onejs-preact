@@ -3,6 +3,6 @@
 
 export * from './index'
 
-declare module "preact" {
-    export * from "./index"
-}
+// declare module "preact" {
+//     export * from "./index"
+// }

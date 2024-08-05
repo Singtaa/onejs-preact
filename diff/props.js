@@ -119,10 +119,11 @@ export function setProperty(dom, name, value, oldValue, namespace) {
 			name != 'colSpan' &&
 			name != 'role' &&
 			name != 'popover' &&
-			name in dom
+			name in dom.ve // MODDED
 		) {
 			try {
-				dom[name] = value == null ? '' : value;
+				// dom[name] = value == null ? '' : value;
+				dom.setAttribute(name, value == null ? '' : value); // MODDED
 				// labelled break is 1b smaller here than a return statement (sorry)
 				break o;
 			} catch (e) { }

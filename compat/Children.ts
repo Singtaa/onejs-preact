@@ -1,9 +1,10 @@
 import { toChildArray } from '../diff/children';
+
 const mapFn = (children, fn) => {
-    if (children == null)
-        return null;
+    if (children == null) return null;
     return toChildArray(toChildArray(children).map(fn));
 };
+
 // This API is completely unnecessary for Preact, so it's basically passthrough.
 export const Children = {
     map: mapFn,
@@ -13,8 +14,7 @@ export const Children = {
     },
     only(children) {
         const normalized = toChildArray(children);
-        if (normalized.length !== 1)
-            throw 'Children.only';
+        if (normalized.length !== 1) throw 'Children.only';
         return normalized[0];
     },
     toArray: toChildArray

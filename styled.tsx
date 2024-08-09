@@ -22,7 +22,7 @@ function styled<T extends keyof JSX.IntrinsicElements>(Tag: T | ((props?) => Ele
             let style = _processTemplate(props, strings, values)
             let compId = hashAndAddRuntimeUSS(style)
             return <AnyTag ref={ref} class={compId} {...props}></AnyTag>
-        }) as (props: JSX.IntrinsicElements[T], ref: any) => Element
+        }) /* as (props: JSX.IntrinsicElements[T], ref: any) => Element */
     }
 
     tag.attrs = (func: (props: any) => ({})) => {

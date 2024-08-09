@@ -18,7 +18,7 @@ function styled(Tag) {
             let style = _processTemplate(props, strings, values);
             let compId = hashAndAddRuntimeUSS(style);
             return h(AnyTag, { ref: ref, class: compId, ...props });
-        });
+        }); /* as (props: JSX.IntrinsicElements[T], ref: any) => Element */
     };
     tag.attrs = (func) => {
         return function (strings, ...values) {

@@ -25,7 +25,7 @@ export type Key = string | number | any;
 
 export type RefObject<T> = { current: T | null };
 export type RefCallback<T> = (instance: T | null) => void;
-export type Ref<T> = RefObject<T> | RefCallback<T> | null;
+export type Ref<T> = RefObject<T> | RefCallback<T>;
 
 export type ComponentChild =
     | VNode<any>
@@ -249,7 +249,11 @@ export function createContext<T>(defaultValue: T): Context<T>;
 
 
 
-
+export function createElement(
+    type: ComponentType<any>,
+    props: any,
+    ...children: ComponentChildren[]
+): VNode;
 
 
 declare type HFunction = {

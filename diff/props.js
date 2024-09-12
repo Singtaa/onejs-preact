@@ -168,10 +168,10 @@ function createEventProxy(useCapture) {
 			const key = e.timestamp;
 			if (!eventDispatchTimes.has(key)) {
 				eventDispatchTimes.set(key, eventClock++);
-				if (eventMetaMap.size >= MAX_ENTRIES) {
+				if (eventDispatchTimes.size >= MAX_ENTRIES) {
 					// Remove the oldest entry (Map maintains insertion order)
-					const oldestKey = eventMetaMap.keys().next().value;
-					eventMetaMap.delete(oldestKey);
+					const oldestKey = eventDispatchTimes.keys().next().value;
+					eventDispatchTimes.delete(oldestKey);
 				}
 			} else {
 				// Simulate LRU cache by re-adding the key to the end of the Map

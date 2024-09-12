@@ -1,10 +1,10 @@
 {
     "name": "onejs-preact",
     "description": "Preact, modified for OneJS",
-    "version": "0.3.18",
+    "version": "0.3.19",
     "main": "index.js",
     "types": "typings.d.ts",
     "dependencies": {
-        "onejs-core": "^0.3.12"
+        "onejs-core": "^0.3.26"
     }
 }

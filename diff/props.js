@@ -26,7 +26,8 @@ function setStyle(style, key, value) {
 // per second for over 280 years before the value reaches Number.MAX_SAFE_INTEGER (2**53 - 1).
 let eventClock = 0;
 
-const eventDispatchTimes = new WeakMap(); // MODDED
+const MAX_ENTRIES = 1000; // MODDED
+const eventDispatchTimes = new Map(); // MODDED
 
 /**
  * Set a property value on a DOM node
@@ -164,11 +165,22 @@ function createEventProxy(useCapture) {
 			eventName = eventName === "Change`1" ? "ValueChanged" : eventName
 			const eventHandler = this._listeners[eventName + useCapture];
 
-			if (!eventDispatchTimes.has(e)) {
-				eventDispatchTimes.set(e, eventClock++);
+			const key = e.timestamp;
+			if (!eventDispatchTimes.has(key)) {
+				eventDispatchTimes.set(key, eventClock++);
+				if (eventMetaMap.size >= MAX_ENTRIES) {
+					// Remove the oldest entry (Map maintains insertion order)
+					const oldestKey = eventMetaMap.keys().next().value;
+					eventMetaMap.delete(oldestKey);
+				}
+			} else {
+				// Simulate LRU cache by re-adding the key to the end of the Map
+				const tmpClock = eventDispatchTimes.get(key);
+				eventDispatchTimes.delete(key);
+				eventDispatchTimes.set(key, tmpClock);
 			}
 
-			const dispatchTime = eventDispatchTimes.get(e);
+			const dispatchTime = eventDispatchTimes.get(key);
 
 			if (dispatchTime < eventHandler._attached) {
 				return;

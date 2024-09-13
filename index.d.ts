@@ -247,7 +247,7 @@ export interface PreactContext<T> extends Context<T> {}
 
 export function createContext<T>(defaultValue: T): Context<T>;
 
-
+export const Fragment: FunctionComponent<{}>;
 
 export function createElement(
     type: ComponentType<any>,

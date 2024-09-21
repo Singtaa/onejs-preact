@@ -9,7 +9,8 @@ function setStyle(style, key, value) {
 	} else if (typeof value != 'number' || IS_NON_DIMENSIONAL.test(key)) {
 		style[key] = value;
 	} else {
-		style[key] = value + 'px';
+		// style[key] = value + 'px'; // MODDED
+		style[key] = value; // MODDED
 	}
 }
 
@@ -42,7 +43,7 @@ export function setProperty(dom, name, value, oldValue, namespace) {
 
 	o: if (name === 'style') {
 		if (typeof value == 'string') {
-			dom.style.cssText = value;
+			dom.style.cssText = value; // Not supported right now
 		} else {
 			if (typeof oldValue == 'string') {
 				dom.style.cssText = oldValue = '';

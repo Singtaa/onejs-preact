@@ -275,9 +275,27 @@ type RenderFunction = {
 // Declare the render function
 export const render: RenderFunction;
 
-export { h, HFunction };
+export function cloneElement(
+	vnode: VNode<any>,
+	props?: any,
+	...children: ComponentChildren[]
+): VNode<any>;
+export function cloneElement<P>(
+	vnode: VNode<P>,
+	props?: any,
+	...children: ComponentChildren[]
+): VNode<P>;
 
-export const isValidElement: (v: VNode) => boolean;
+export { h, HFunction };
 
 export namespace options { }
 export default options;
+
+//
+// Preact helpers
+// -----------------------------------
+export function createRef<T = any>(): RefObject<T>;
+export function toChildArray(
+	children: ComponentChildren
+): Array<VNode | string | number>;
+export const isValidElement: (v: VNode) => boolean;

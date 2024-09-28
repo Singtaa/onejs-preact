@@ -112,6 +112,18 @@ export function useCallback<T extends Function>(callback: T, inputs: Inputs): T;
 
 export type StateUpdater<S> = ((prevState: S) => S);
 
+/**
+ * Customize the displayed value in the devtools panel.
+ *
+ * @param value Custom hook name or object that is passed to formatter
+ * @param formatter Formatter to modify value before sending it to the devtools
+ */
+export function useDebugValue<T>(value: T, formatter?: (value: T) => any): void;
+
+export function useId(): string;
+
+
+
 export { useEventfulState } from './eventful';
 
 // Export statement

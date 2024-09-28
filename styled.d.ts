@@ -1,6 +1,5 @@
 /// <reference types="onejs-core" />
 /// <reference types="onejs-core" />
-/// <reference types="onejs-core" />
 declare function styled<T extends keyof JSX.IntrinsicElements>(Tag: T | ((props?: any) => Element)): {
     (strings: TemplateStringsArray, ...values: any[]): (props: JSX.IntrinsicElements[T], ref: any) => Element;
     attrs(func: (props: any) => ({})): (strings: TemplateStringsArray, ...values: any[]) => (props: any) => any;

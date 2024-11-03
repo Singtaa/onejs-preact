@@ -100,7 +100,9 @@ interface MutableRef<T> {
  *
  * @param initialValue the initial value to store in the ref object
  */
-export function useRef<T>(initialValue?: T): MutableRef<T>;
+export function useRef<T>(initialValue: T): MutableRef<T>;
+export function useRef<T>(): MutableRef<T | undefined>;
+export function useRef<T>(initialValue: null): MutableRef<T | null>;
 // export function useRef<T>(initialValue: T | null): RefObject<T>;
 // export function useRef<T = undefined>(): MutableRef<T | undefined>;
 

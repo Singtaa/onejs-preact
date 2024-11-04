@@ -180,14 +180,14 @@ export abstract class Component<P, S> {
 // Preact render
 // -----------------------------------
 interface ContainerNode {
-	readonly nodeType: number;
-	readonly parentNode: ContainerNode | null;
-	readonly firstChild: ContainerNode | null;
-	readonly childNodes: ArrayLike<ContainerNode>;
+    readonly nodeType: number;
+    readonly parentNode: ContainerNode | null;
+    readonly firstChild: ContainerNode | null;
+    readonly childNodes: ArrayLike<ContainerNode>;
 
-	insertBefore(node: ContainerNode, child: ContainerNode | null): ContainerNode;
-	appendChild(node: ContainerNode): ContainerNode;
-	removeChild(child: ContainerNode): ContainerNode;
+    insertBefore(node: ContainerNode, child: ContainerNode | null): ContainerNode;
+    appendChild(node: ContainerNode): ContainerNode;
+    removeChild(child: ContainerNode): ContainerNode;
 }
 
 // export function render(vnode: ComponentChild, parent: ContainerNode): void;
@@ -196,25 +196,25 @@ interface ContainerNode {
  * Global options for preact
  */
 export interface Options {
-	/** Attach a hook that is invoked whenever a VNode is created. */
-	vnode?(vnode: VNode): void;
-	/** Attach a hook that is invoked immediately before a vnode is unmounted. */
-	unmount?(vnode: VNode): void;
-	/** Attach a hook that is invoked after a vnode has rendered. */
-	diffed?(vnode: VNode): void;
-	event?(e: Event): any;
-	requestAnimationFrame?(callback: () => void): void;
-	debounceRendering?(cb: () => void): void;
-	useDebugValue?(value: string | number): void;
-	_addHookName?(name: string | number): void;
-	__suspenseDidResolve?(vnode: VNode, cb: () => void): void;
-	// __canSuspenseResolve?(vnode: VNode, cb: () => void): void;
+    /** Attach a hook that is invoked whenever a VNode is created. */
+    vnode?(vnode: VNode): void;
+    /** Attach a hook that is invoked immediately before a vnode is unmounted. */
+    unmount?(vnode: VNode): void;
+    /** Attach a hook that is invoked after a vnode has rendered. */
+    diffed?(vnode: VNode): void;
+    event?(e: Event): any;
+    requestAnimationFrame?(callback: () => void): void;
+    debounceRendering?(cb: () => void): void;
+    useDebugValue?(value: string | number): void;
+    _addHookName?(name: string | number): void;
+    __suspenseDidResolve?(vnode: VNode, cb: () => void): void;
+    // __canSuspenseResolve?(vnode: VNode, cb: () => void): void;
 
-	/**
-	 * Customize attribute serialization when a precompiled JSX transform
-	 * is used.
-	 */
-	attr?(name: string, value: any): string | void;
+    /**
+     * Customize attribute serialization when a precompiled JSX transform
+     * is used.
+     */
+    attr?(name: string, value: any): string | void;
 }
 
 export const options: Options;
@@ -223,27 +223,27 @@ export const options: Options;
 // Context
 // -----------------------------------
 export interface Consumer<T>
-	extends FunctionComponent<{
-		children: (value: T) => ComponentChildren;
-	}> {}
-export interface PreactConsumer<T> extends Consumer<T> {}
+    extends FunctionComponent<{
+        children: (value: T) => ComponentChildren;
+    }> { }
+export interface PreactConsumer<T> extends Consumer<T> { }
 
 export interface Provider<T>
-	extends FunctionComponent<{
-		value: T;
-		children?: ComponentChildren;
-	}> {}
-export interface PreactProvider<T> extends Provider<T> {}
+    extends FunctionComponent<{
+        value: T;
+        children?: ComponentChildren;
+    }> { }
+export interface PreactProvider<T> extends Provider<T> { }
 export type ContextType<C extends Context<any>> = C extends Context<infer T>
-	? T
-	: never;
+    ? T
+    : never;
 
 export interface Context<T> {
-	Consumer: Consumer<T>;
-	Provider: Provider<T>;
-	displayName?: string;
+    Consumer: Consumer<T>;
+    Provider: Provider<T>;
+    displayName?: string;
 }
-export interface PreactContext<T> extends Context<T> {}
+export interface PreactContext<T> extends Context<T> { }
 
 export function createContext<T>(defaultValue: T): Context<T>;
 
@@ -263,6 +263,12 @@ declare type HFunction = {
 
 declare const h: HFunction;
 
+// declare namespace h {
+//     namespace JSX {
+//         interface Element extends VNode<any> { }
+//     }
+// }
+
 // Component type
 // type Component = (props: Record<string, any>) => VNode;
 
@@ -276,14 +282,14 @@ type RenderFunction = {
 export const render: RenderFunction;
 
 export function cloneElement(
-	vnode: VNode<any>,
-	props?: any,
-	...children: ComponentChildren[]
+    vnode: VNode<any>,
+    props?: any,
+    ...children: ComponentChildren[]
 ): VNode<any>;
 export function cloneElement<P>(
-	vnode: VNode<P>,
-	props?: any,
-	...children: ComponentChildren[]
+    vnode: VNode<P>,
+    props?: any,
+    ...children: ComponentChildren[]
 ): VNode<P>;
 
 export { h, HFunction };
@@ -296,6 +302,6 @@ export default options;
 // -----------------------------------
 export function createRef<T = any>(): RefObject<T>;
 export function toChildArray(
-	children: ComponentChildren
+    children: ComponentChildren
 ): Array<VNode | string | number>;
 export const isValidElement: (v: VNode) => boolean;

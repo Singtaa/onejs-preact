@@ -88,7 +88,7 @@ declare function useMemo<T>(factory: () => T, deps: DependencyList | undefined):
 export function useContext<T>(context: PreactContext<T>): T;
 
 // useRef
-interface MutableRef<T> {
+export interface MutableRef<T> {
     current: T;
 }
 /**

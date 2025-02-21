@@ -23,3 +23,4 @@ export default {
 export { forwardRef } from './forwardRef';
 export { memo } from './memo';
 export { Children } from './Children';
+export { Portal } from './Portal';

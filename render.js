@@ -4,6 +4,8 @@ import { createElement, Fragment } from './create-element';
 import options from './options';
 import { slice } from './util';
 
+const cleanupMap = new WeakMap(); // MODDED
+
 /**
  * Render a Preact virtual node into a DOM element
  * @param {ComponentChild} vnode The virtual node to render
@@ -12,6 +14,12 @@ import { slice } from './util';
  * existing DOM tree rooted at `replaceNode`
  */
 export function render(vnode, parentDom, replaceNode) {
+	// MODDED
+	if (typeof onejs !== 'undefined' && parentDom && !cleanupMap.has(parentDom)) {
+		onejs.add_onDispose(() => render(null, parentDom));
+		cleanupMap.set(parentDom, true);
+	}
+
 	if (options._root) options._root(vnode, parentDom);
 
 	// We abuse the `replaceNode` parameter in `hydrate()` to signal if we are in

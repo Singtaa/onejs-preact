@@ -1,4 +1,4 @@
-import { PreactContext, Ref, RefObject } from '..';
+import { ErrorInfo, PreactContext, Ref, RefObject } from '..';
 
 type Inputs = ReadonlyArray<unknown>;
 
@@ -123,6 +123,8 @@ export type StateUpdater<S> = ((prevState: S) => S);
 export function useDebugValue<T>(value: T, formatter?: (value: T) => any): void;
 
 export function useId(): string;
+
+export function useErrorBoundary(error?: any, errorInfo?: ErrorInfo)
 
 
 

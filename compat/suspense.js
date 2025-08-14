@@ -194,7 +194,7 @@ Suspense.prototype.render = function (props, state) {
 		// (i.e. due to a setState further up in the tree)
 		// it's _children prop is null, in this case we "forget" about the parked vnodes to detach
 		if (this._vnode._children) {
-			const detachedParent = document.createElement('div');
+			const detachedParent = globalThis.onejsDocument.createElement('div'); // MODDED
 			const detachedComponent = this._vnode._children[0]._component;
 			this._vnode._children[0] = detachedClone(
 				this._detachOnNextRender,

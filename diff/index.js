@@ -408,10 +408,10 @@ function diffElementNodes(
 
 	if (dom == null) {
 		if (nodeType === null) {
-			return document.createTextNode(newProps);
+			return globalThis.onejsDocument.createTextNode(newProps); // MODDED
 		}
 
-		dom = document.createElementNS(
+		dom = globalThis.onejsDocument.createElementNS( // MODDED
 			namespace,
 			nodeType,
 			newProps.is && newProps

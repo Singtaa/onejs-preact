@@ -15,6 +15,10 @@ const cleanupMap = new WeakMap(); // MODDED
  */
 export function render(vnode, parentDom, replaceNode) {
 	// MODDED
+	if (typeof globalThis.ONEJS_WEBGL !== 'undefined' && globalThis.ONEJS_WEBGL && vnode !== null) {
+		render(null, parentDom) // Workaround for WebGL since JsEnv doesn't get disposed there
+	}
+	// MODDED
 	if (typeof onejs !== 'undefined' && parentDom && !cleanupMap.has(parentDom)) {
 		onejs.add_onDispose(() => render(null, parentDom));
 		cleanupMap.set(parentDom, true);
